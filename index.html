@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="eu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gizarte Segurantza Espainian — Zer da, nola sortu zen eta nola eboluzionatu du</title>
+  <meta name="description" content="DBH4–Batxilergorako orri didaktikoa: Gizarte Segurantza Espainian — zentzua, sorrera, historia, mugarriak, protagonistak, mito/egia eta auto-ebaluazioa." />
+  <style>
+    :root{
+      --bg: #0b1020;            /* iluna by default; toggle for light */
+      --panel: #151a2e;
+      --text: #e7ebff;
+      --muted: #a8b0d6;
+      --accent: #7aa2ff;
+      --accent-2:#9af1c6;
+      --danger:#ff7a7a;
+      --ok:#6EF3A5;
+      --card:#0f1426;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .light{
+      --bg:#f8fafc; --panel:#ffffff; --text:#0f172a; --muted:#475569; --card:#ffffff; --accent:#1e40af; --accent-2:#0f766e; --danger:#b91c1c; --ok:#16a34a;
+    }
+    html,body{height:100%}
+    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--text);}
+    .container{max-width:1100px; margin:0 auto; padding:24px}
+    header.hero{position:relative; border-radius:24px; padding:28px; background:linear-gradient(135deg, var(--panel), var(--card)); box-shadow:var(--shadow); overflow:hidden}
+    header .badge{display:inline-flex; gap:8px; align-items:center; background:rgba(122,162,255,.15); color:var(--accent); border:1px solid rgba(122,162,255,.3); padding:6px 10px; border-radius:999px; font-size:13px}
+    header h1{margin:.3rem 0 .6rem; font-size:clamp(26px, 4vw, 40px); line-height:1.1}
+    header p{max-width:60ch; color:var(--muted)}
+    .actions{display:flex; gap:12px; margin-top:14px; flex-wrap:wrap}
+    .btn{border:1px solid rgba(255,255,255,.15); background:transparent; color:var(--text); padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:600}
+    .btn:hover{border-color: rgba(255,255,255,.35)}
+    .btn.primary{background: linear-gradient(135deg, var(--accent), #6b8cff); color:white; border:none}
+    .btn.secondary{background: linear-gradient(135deg, var(--accent-2), #4ade80); color:#03150d; border:none}
+
+    nav.tabs{position:sticky; top:0; z-index:5; background:linear-gradient(180deg, rgba(11,16,32,.9), rgba(11,16,32,.6)); backdrop-filter: blur(8px); border-bottom:1px solid rgba(255,255,255,.06)}
+    nav.tabs .inner{display:flex; gap:10px; overflow:auto; padding:10px 24px}
+    nav.tabs a{color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:10px; border:1px solid transparent; white-space:nowrap}
+    nav.tabs a:hover{color:var(--text); border-color: rgba(255,255,255,.12)}
+
+    section{margin:28px 0}
+    .grid{display:grid; gap:14px}
+    .grid.cols-3{grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));}
+
+    .card{background:var(--panel); border:1px solid rgba(255,255,255,.06); border-radius:18px; padding:18px; box-shadow:var(--shadow)}
+    .card h3{margin-top:0}
+
+    .kpi{display:flex; align-items:center; gap:12px}
+    .kpi .dot{width:10px; height:10px; border-radius:50%; background:var(--accent)}
+    .muted{color:var(--muted)}
+
+    .timeline{position:relative; padding-left:22px}
+    .timeline:before{content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:linear-gradient(var(--accent), transparent)}
+    .tl-item{position:relative; padding:10px 10px 10px 16px; margin:6px 0; border:1px solid rgba(255,255,255,.07); border-radius:14px; background:var(--card)}
+    .tl-item:before{content:""; position:absolute; left:-5px; top:14px; width:12px; height:12px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(122,162,255,.25)}
+    .tl-item .year{font-weight:800; letter-spacing:.3px}
+
+    details summary{cursor:pointer; list-style:none}
+    details summary::-webkit-details-marker{display:none}
+    details{border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:10px 14px; background:var(--card)}
+
+    .pill{display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,.14); color:var(--muted); border-radius:999px; padding:6px 10px; font-size:12px; margin:4px 6px 0 0}
+    .legend{display:flex; flex-wrap:wrap; gap:4px; margin:.5rem 0}
+
+    .two{display:grid; gap:16px; grid-template-columns: 1fr;}
+    @media (min-width: 920px){ .two{grid-template-columns: 1.2fr .8fr;} }
+
+    .search{display:flex; gap:8px; align-items:center; background:var(--card); border:1px solid rgba(255,255,255,.08); padding:10px 12px; border-radius:12px}
+    .search input{flex:1; background:transparent; border:none; outline:none; color:var(--text)}
+
+    .myth{border-left:4px solid var(--danger)}
+    .fact{border-left:4px solid var(--ok)}
+
+    .law-table{width:100%; border-collapse:collapse; border:1px solid rgba(255,255,255,.08);}
+    .law-table th,.law-table td{border-bottom:1px solid rgba(255,255,255,.06); padding:10px; text-align:left}
+    .law-table tr:hover{background:rgba(255,255,255,.04)}
+
+    .quiz .q{padding:14px; border:1px solid rgba(255,255,255,.1); border-radius:12px; margin:12px 0; background:var(--card)}
+    .quiz .q h4{margin:.2rem 0 .6rem}
+    .quiz button{margin-top:10px}
+    .score{font-weight:800}
+
+    .footer{font-size:12px; color:var(--muted); text-align:center; padding:24px 0; border-top:1px dashed rgba(255,255,255,.12)}
+    .hide{display:none !important}
+
+    @media print{
+      nav.tabs, .actions, .search, .footer, #langSwitch{display:none !important}
+      body{background:white; color:black}
+      .card, .tl-item, details{break-inside:avoid}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <span class="badge" aria-label="maila">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7l3-7z" stroke="currentColor" stroke-width="1.5"/></svg>
+        DBH4–Batxilergoa · Historia/Ekonomia
+      </span>
+      <h1>Gizarte Segurantza Espainian</h1>
+      <p>Helburua: ulertzea zer den, zergatik sortu zen eta nola eboluzionatu duen. <strong>Ideia nagusia</strong>: ez da garai bateko “oparia”; mende bateko eraikuntza kolektiboa da, langileen borrokek, eredu europarrek eta adostasun politikoek osatua.</p>
+      <div class="actions">
+        <button class="btn primary" id="printBtn" title="Inprimatu / PDF">🖨️ Inprimatu / PDF</button>
+        <button class="btn secondary" id="themeBtn" title="Itxura aldatu">🌗 Itxura: Ilun/Argi</button>
+        <button class="btn" id="collapseAll" title="Zabaldu/Itxi xehetasunak">▦ Zabaldu/Itxi atal guztiak</button>
+      </div>
+    </header>
+  </div>
+
+  <nav class="tabs" aria-label="atal nabigazioa">
+    <div class="inner">
+      <a href="#zer-da">Zer da?</a>
+      <a href="#kontzeptu-mapa">Kontzeptu‑mapa</a>
+      <a href="#kronologia">Kronologia</a>
+      <a href="#protagonistak">Protagonistak</a>
+      <a href="#arrazoiak">Arrazoiak</a>
+      <a href="#eboluzioa">Eboluzioa</a>
+      <a href="#mitoak">Mitoak vs Egiak</a>
+      <a href="#legeak">Lege nagusiak</a>
+      <a href="#baliabideak">Baliabideak</a>
+      <a href="#quiz">Auto‑ebaluazioa</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Zer da? -->
+    <section id="zer-da" class="two">
+      <div class="card">
+        <h2>Zer da Gizarte Segurantza?</h2>
+        <p class="muted">Estatuak antolatutako <strong>babes-sistema</strong> da, bizi‑zikloko arriskuen aurrean (gaixotasuna, istripuak, langabezia, ezintasunak, zahartzaroa, heriotza, gurasotasuna…). Bi zutabe: <strong>diru‑prestazioak</strong> eta <strong>zerbitzu publikoak</strong>.</p>
+        <div class="grid cols-3">
+          <div class="card kpi"><span class="dot"></span> <div><strong>Elkartasuna</strong><br><span class="muted">Belaunaldien eta errenten artekoa</span></div></div>
+          <div class="card kpi"><span class="dot"></span> <div><strong>Berdintasuna</strong><br><span class="muted">Sarbide unibertsalerantz</span></div></div>
+          <div class="card kpi"><span class="dot"></span> <div><strong>Finantzaketa mistoa</strong><br><span class="muted">Kotizazioak + zergak</span></div></div>
+        </div>
+        <details style="margin-top:10px"><summary><strong>Konstituzioa (1978)</strong> — 41. artikulua (GS) eta 43. artikulua (osasuna) <span class="muted">[+ ikus]</span></summary>
+          <p class="muted">Botere publikoek Gizarte Segurantza bermatuko dute (41. art.) eta osasunerako eskubidea aitortzen da (43. art.). </p>
+        </details>
+      </div>
+      
+    </section>
+
+    <!-- Testuingurua -->
+    <section id="testuingurua">
+      <div class="card">
+        <h2>Testuingurua (Europa + Espainia)</h2>
+        <p><strong>Europa</strong>: XIX. amaierako eredu bismarckiarrek (Alemania) kotizazioetan oinarritutako aseguruen logika zabaldu zuten. <strong>Espainia</strong>: industrializazioak arrisku sozial berriak ekarri zituen eta gizarte‑erreformismoak lehen egiturak bultzatu zituen.</p>
+        <div class="grid cols-3">
+          <div class="card"><h3>1883</h3><p>Comisión de Reformas Sociales: langileen bizi‑baldintzak ikertzeko.</p></div>
+          <div class="card"><h3>1903</h3><p>Instituto de Reformas Sociales: proposamenak eta ikuskaritza.</p></div>
+          <div class="card"><h3>1908</h3><p>Instituto Nacional de Previsión (INP): aseguruen koordinazioa.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontzeptu-mapa -->
+    <section id="kontzeptu-mapa" class="card">
+      <h2>Kontzeptu‑mapa (ikuspegi azkarra)</h2>
+      <p class="muted">Arrisku sozialak → asegurua → finantzaketa → estaldura → eskubidea → unibertsaltasuna. Hemen ikuspegi bisuala daukazu.</p>
+      <div class="card" style="overflow:auto">
+        <svg viewBox="0 0 900 220" width="100%" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kontzeptu‑mapa">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L9,3 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <g fill="none" stroke="currentColor">
+            <rect x="20" y="50" width="140" height="60" rx="12" fill="transparent"/>
+            <rect x="180" y="50" width="140" height="60" rx="12"/>
+            <rect x="340" y="50" width="140" height="60" rx="12"/>
+            <rect x="500" y="50" width="140" height="60" rx="12"/>
+            <rect x="660" y="50" width="180" height="60" rx="12"/>
+            <line x1="160" y1="80" x2="180" y2="80" stroke-width="2" marker-end="url(#arrow)"/>
+            <line x1="320" y1="80" x2="340" y2="80" stroke-width="2" marker-end="url(#arrow)"/>
+            <line x1="480" y1="80" x2="500" y2="80" stroke-width="2" marker-end="url(#arrow)"/>
+            <line x1="640" y1="80" x2="660" y2="80" stroke-width="2" marker-end="url(#arrow)"/>
+          </g>
+          <g fill="currentColor" font-family="ui-sans-serif, system-ui" font-size="14">
+            <text x="90" y="83" text-anchor="middle">Arrisku sozialak</text>
+            <text x="250" y="83" text-anchor="middle">Asegurua</text>
+            <text x="410" y="83" text-anchor="middle">Finantzaketa</text>
+            <text x="570" y="83" text-anchor="middle">Estaldura</text>
+            <text x="750" y="83" text-anchor="middle">Eskubidea → Unibertsaltasuna</text>
+          </g>
+          <g fill="currentColor" font-size="12" opacity="0.8">
+            <text x="90" y="115" text-anchor="middle">(gaixotasuna, istripuak…)</text>
+            <text x="250" y="115" text-anchor="middle">(publikoa + elkartasuna)</text>
+            <text x="410" y="115" text-anchor="middle">(kotizazioak + zergak)</text>
+            <text x="570" y="115" text-anchor="middle">(prestazioak + zerbitzuak)</text>
+            <text x="750" y="115" text-anchor="middle">(1978–1986 finkapena)</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Kronologia -->
+    <section id="kronologia">
+      <div class="two">
+        <div class="card">
+          <h2>Kronologia — mugarri nagusiak</h2>
+          <div class="search" role="search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 21l-4.3-4.3M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" stroke="currentColor" stroke-width="1.6"/></svg>
+            <input id="filter" type="search" placeholder="Bilatu urte, lege, gai… (adib. 1986, osasuna, SOVI)" aria-label="bilaketa" />
+          </div>
+          <div class="timeline" id="tl">
+            <div class="tl-item" data-tags="legea istripua 1900 dato">
+              <div class="year">1900 — Lan Istripuen Legea (Ley Dato) 📜</div>
+              <div>Enpresaburuaren erantzukizuna eta arrisku profesionalaren doktrina.</div>
+            </div>
+            <div class="tl-item" data-tags="erakundea 1908 inp">
+              <div class="year">1908 — Instituto Nacional de Previsión 🏛️</div>
+              <div>Aseguruen kutxak koordinatzeko erakunde nagusia.</div>
+            </div>
+            <div class="tl-item" data-tags="legea 1919 erretiro zahartzaroa inp">
+              <div class="year">1919 — Retiro Obrero 📜</div>
+              <div>Zahartzaro‑aseguru <em>obligatorioa</em> abiarazteko bidea.</div>
+            </div>
+            <div class="tl-item" data-tags="legea 1923 1929 1931 amatasuna osasuna inp">
+              <div class="year">1923/1929–1931 — Amatasun Asegurua 📜</div>
+              <div>Haurdunaldia eta erditzearen ondorengo babesa: mediku‑laguntza eta atseden ordaindua.</div>
+            </div>
+            <div class="tl-item" data-tags="legea 1931 langabezia errepublika largo caballero">
+              <div class="year">1931 — Caja contra el Paro Forzoso 📜</div>
+              <div>Langabeziaren lehen estaldura orokorra Errepublikan (INPren baitan).</div>
+            </div>
+            <div class="tl-item" data-tags="legea osasuna 1942 frankismoa soe">
+              <div class="year">1942 — Seguro Obligatorio de Enfermedad (SOE) 📜</div>
+              <div>Gaixotasun‑amatasun babesa errenta baxuetarako; estaldura murriztua.</div>
+            </div>
+            <div class="tl-item" data-tags="legea 1947 zahartzaroa ezintasunak sovi">
+              <div class="year">1947 — SOVI (Zahartzaroa eta Ezintasuna) 📜</div>
+              <div>Oinarrizko pentsioak zahartzaro eta ezintasun kasuetarako.</div>
+            </div>
+            <div class="tl-item" data-tags="legea 1963 1966 egitura bateratua">
+              <div class="year">1963/1966 — GSren oinarriak eta testu artikulatua 📜</div>
+              <div>Erregimen zatituen integrazio‑diseinua eta kudeaketa arrazionalizazioa.</div>
+            </div>
+            <div class="tl-item" data-tags="legea konstituzioa 1978 eskubideak osasuna">
+              <div class="year">1978 — Konstituzioa 📜</div>
+              <div>41. art.: GS estatuaren betebeharra; 43. art.: osasun‑eskubidea.</div>
+            </div>
+            <div class="tl-item" data-tags="erakundea 1978 rdl 36/1978 inss insalud inserso">
+              <div class="year">1978 — RDL 36/1978 🏛️</div>
+              <div>INSS, INSALUD, INSERSO… kudeaketa berrantolatu eta sare publikoa antolatzeko oinarriak.</div>
+            </div>
+            <div class="tl-item" data-tags="legea 1986 osasuna unibertsala sns">
+              <div class="year">1986 — Osasunaren Lege Orokorra (14/1986) 📜</div>
+              <div>Sistema Nacional de Salud: osasun <strong>unibertsala</strong> (egoiliar guztientzat).</div>
+            </div>
+            <div class="tl-item" data-tags="legea 1990 pentsio ezkontributiboak pnc pobrezia">
+              <div class="year">1990 — Pentsio ez‑kontributiboak (PNC) 📜</div>
+              <div>Kotizaziorik gabe geratutakoentzako oinarrizko pentsioak.</div>
+            </div>
+            <div class="tl-item" data-tags="legea 1995 pacto de toledo pentsioak iraunkortasuna">
+              <div class="year">1995 — Pacto de Toledo 📜</div>
+              <div>Pentsioen iraunkortasunerako adostasun politiko orokorra.</div>
+            </div>
+            <div class="tl-item" data-tags="erakundea 2001 2002 osasun transferentziak autonomiak">
+              <div class="year">2001–2002 — Osasun‑eskumenen transferentziak 🏛️</div>
+              <div>Autonomia erkidegoetara: INSALUDen amaiera praktikoa; kohesio‑araudia ondoren.</div>
+            </div>
+          </div>
+        </div>
+        <aside class="card">
+          <h3>Ikasleentzako laburpena</h3>
+          <ul>
+            <li>Lehen aseguruen <strong>oinarriak</strong>: 1900–1931.</li>
+            <li>Frankismoan <strong>hedapena</strong>, baina estaldura <em>mugatua</em> eta propaganda.</li>
+            <li><strong>Eskubide</strong>‑ikuspegia eta <strong>unibertsaltasuna</strong>: 1978–1986.</li>
+          </ul>
+          
+        </aside>
+      </div>
+    </section>
+
+    <!-- Protagonistak -->
+    <section id="protagonistak" class="grid cols-3">
+      <div class="card">
+        <h2>🏛️ Erakundeak</h2>
+        <ul>
+          <li>Comisión / Instituto de Reformas Sociales (1883/1903)</li>
+          <li>INP — Instituto Nacional de Previsión (1908)</li>
+          <li>INSS, INSERSO, INSALUD (1978) → Sare autonomikoak (2001–02)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>👥 Mugimendu sozialak</h2>
+        <ul>
+          <li>Langile mugimendua eta sindikatuak (UGT, CNT…)</li>
+          <li>Osasun/amatasunaren aldeko mugimenduak</li>
+          <li>Gizarte‑erreformismo katolikoa eta europar eragina</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>🧭 Eragile politikoak</h2>
+        <ul>
+          <li>Eduardo Dato (1900)</li>
+          <li>Romanones eta Maura (1908–1919)</li>
+          <li>Largo Caballero (1931)</li>
+          <li>1960ko hamarkadako integrazio‑eredua (1963/66)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Arrazoiak -->
+    <section id="arrazoiak" class="card">
+      <h2>Zergatik sortu zen?</h2>
+      <div class="grid cols-3">
+        <div class="card"><h3>Industrializazioa</h3><p>Lan‑istripuak, gaixotasunak, bizitza‑itxaropenaren luzapena.</p></div>
+        <div class="card"><h3>Gatazka + adostasuna</h3><p>Greba eta mobilizazioak → negoziazioa eta legeak.</p></div>
+        <div class="card"><h3>Konbergentzia europarra</h3><p>Eredu bismarckiarra → babes‑sare modernoa.</p></div>
+      </div>
+    </section>
+
+    <!-- Eboluzioa -->
+    <section id="eboluzioa" class="card">
+      <h2>Eboluzioa (laburbilduta)</h2>
+      <ol>
+        <li><strong>Istripua (1900)</strong> → <strong>Zahartzaroa (1919)</strong> → <strong>Amatasuna (1923/29–31)</strong> → <strong>Langabezia (1931)</strong>.</li>
+        <li><strong>Gaixotasuna (1942 SOE)</strong> eta <strong>SOVI (1947)</strong>: hedapena, baina ez unibertsala.</li>
+        <li><strong>Integrazioa (1963/66)</strong> → <strong>Eskubide‑ikuspegia (1978)</strong> → <strong>Osasun unibertsala (1986)</strong> → <strong>PNC (1990)</strong> → <strong>Pacto de Toledo (1995)</strong>.</li>
+      </ol>
+    </section>
+
+    <!-- Mitoak -->
+    <section id="mitoak" class="grid cols-3">
+      <div class="card myth">
+        <h3>Mitoa</h3>
+        <p>“Franco izan zen Gizarte Segurantzaren sortzailea”.</p>
+      </div>
+      <div class="card fact">
+        <h3>Egia</h3>
+        <p>Lehen oinarriak 1900–1931 artean jarri ziren; frankismoak hedatu zituen arlo batzuk, baina estaldura mugatua izan zen. Eskubide‑ikuspegia eta unibertsaltasuna demokrazian finkatu ziren (1978–1986).</p>
+      </div>
+      <div class="card">
+        <h3>Zergatik sortzen da mito hau?</h3>
+        <ul>
+          <li>Propaganda ofiziala (1940–60).</li>
+          <li>Lege askoren izenak eta datak ez ezagutzea.</li>
+          <li>“Obra publikoak = eskubideak” nahastea.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Lege nagusiak -->
+    <section id="legeak">
+      <div class="card">
+        <h2>Lege nagusien taula (bilagarria)</h2>
+        <table class="law-table" id="lawTable">
+          <thead>
+            <tr><th>Urtea</th><th>Legea / Neurria</th><th>Babesa</th><th>Oharrak</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1900</td><td>Lan Istripuen Legea</td><td>Istripuak</td><td>Enpresaburuaren erantzukizuna</td></tr>
+            <tr><td>1908</td><td>INP sortu</td><td>Koordinazioa</td><td>Aseguruen kutxak</td></tr>
+            <tr><td>1919</td><td>Retiro Obrero</td><td>Zahartzaroa</td><td>Obligatorioa</td></tr>
+            <tr><td>1923/29–31</td><td>Amatasun Asegurua</td><td>Amatasuna/osasuna</td><td>Laguntza + atseden ordaindua</td></tr>
+            <tr><td>1931</td><td>Caja contra el Paro Forzoso</td><td>Langabezia</td><td>Errepublika (INP)</td></tr>
+            <tr><td>1942</td><td>SOE</td><td>Gaixotasuna</td><td>Errenta baxuak; estaldura mugatua</td></tr>
+            <tr><td>1947</td><td>SOVI</td><td>Zahartzaroa/Ezintasuna</td><td>Oinarrizko pentsioak</td></tr>
+            <tr><td>1963/66</td><td>GSren oinarriak / testu artikulatua</td><td>Integrazioa</td><td>Erregimenak bateratzeko diseinua</td></tr>
+            <tr><td>1978</td><td>Konstituzioa + RDL 36/1978</td><td>Eskubidea / Kudeaketa</td><td>INSS/INSALUD/INSERSO</td></tr>
+            <tr><td>1986</td><td>Osasunaren Lege Orokorra</td><td>Osasun unibertsala</td><td>SNS sortu</td></tr>
+            <tr><td>1990</td><td>PNC</td><td>Ez‑kontributiboak</td><td>Pobrezia‑arriskuaren murrizketa</td></tr>
+            <tr><td>1995</td><td>Pacto de Toledo</td><td>Pentsioak</td><td>Adostasun politikoa</td></tr>
+            <tr><td>2001–02</td><td>Osasun‑transferentziak</td><td>Antolaketa</td><td>Autonomietara</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Baliabideak -->
+    <section id="baliabideak" class="card">
+      <h2>Baliabide azkarrak</h2>
+      <ul>
+        <li>BOE: 1978 Konstituzioa (41. eta 43. artikuluak) • 1986 Osasunaren Lege Orokorra • 1995 Pacto de Toledo gomendioak.</li>
+        <li>Segurtasun Soziala (historia atala) eta INPren artxiboak.</li>
+        <li>Ikertzaileak: Pons‑Pons, Espuelas (Espainiako ongizate‑estatuaren bilakaera).</li>
+      </ul>
+      
+    </section>
+
+    <!-- Quiz -->
+    <section id="quiz" class="card quiz">
+      <h2>Auto‑ebaluazioa (7 galdera)</h2>
+      <div class="q" data-ans="b">
+        <h4>1) Zein urtean hasi zen Espainian lan‑istripuen lehen estaldura orokorra?</h4>
+        <label><input type="radio" name="q1" value="a"> 1890</label><br>
+        <label><input type="radio" name="q1" value="b"> 1900</label><br>
+        <label><input type="radio" name="q1" value="c"> 1919</label>
+      </div>
+      <div class="q" data-ans="c">
+        <h4>2) INP (Instituto Nacional de Previsión) noiz sortu zen?</h4>
+        <label><input type="radio" name="q2" value="a"> 1903</label><br>
+        <label><input type="radio" name="q2" value="b"> 1910</label><br>
+        <label><input type="radio" name="q2" value="c"> 1908</label>
+      </div>
+      <div class="q" data-ans="a">
+        <h4>3) Zein da egia?</h4>
+        <label><input type="radio" name="q3" value="a"> 1978–1986 artean finkatu zen eskubide‑ikuspegia eta osasun unibertsala.</label><br>
+        <label><input type="radio" name="q3" value="b"> Franco izan zen GS osoaren sortzaile bakarra.</label><br>
+        <label><input type="radio" name="q3" value="c"> 1931n ez zen langabeziari buruzko neuririk hartu.</label>
+      </div>
+      <div class="q" data-ans="b">
+        <h4>4) SOE (1942) zer estaltzen zuen nagusiki?</h4>
+        <label><input type="radio" name="q4" value="a"> Langabezia</label><br>
+        <label><input type="radio" name="q4" value="b"> Gaixotasuna eta amatasuna</label><br>
+        <label><input type="radio" name="q4" value="c"> Etxebizitza</label>
+      </div>
+      <div class="q" data-ans="a">
+        <h4>5) PNC (1990) zer dira?</h4>
+        <label><input type="radio" name="q5" value="a"> Pentsio ez‑kontributiboak</label><br>
+        <label><input type="radio" name="q5" value="b"> Kotizazio maximoak</label><br>
+        <label><input type="radio" name="q5" value="c"> Enpresen kuota bereziak</label>
+      </div>
+      <div class="q" data-ans="c">
+        <h4>6) Zein binaka doa ondo?</h4>
+        <label><input type="radio" name="q6" value="a"> 1963 — Pacto de Toledo</label><br>
+        <label><input type="radio" name="q6" value="b"> 1986 — SOVI</label><br>
+        <label><input type="radio" name="q6" value="c"> 1900 — Lan Istripuen Legea</label>
+      </div>
+      <div class="q" data-ans="b">
+        <h4>7) Osasun‑eskumenen transferentziak noiz bukatu ziren, praktikan?</h4>
+        <label><input type="radio" name="q7" value="a"> 1978</label><br>
+        <label><input type="radio" name="q7" value="b"> 2001–2002</label><br>
+        <label><input type="radio" name="q7" value="c"> 1995</label>
+      </div>
+      <button class="btn primary" id="checkQuiz">Egiaztatu</button>
+      <p id="result" class="muted">&nbsp;</p>
+    </section>
+
+    <section class="footer">
+      <p>Azken eguneraketa: 2025‑08‑14 · Diseinua: Lukenentzako orri didaktikoa · CC‑BY‑SA</p>
+    </section>
+  </main>
+
+  <script>
+    // Tema ilun/argi
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click',()=>{
+      document.documentElement.classList.toggle('light');
+      localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
+    });
+    // Restore preference
+    const saved = localStorage.getItem('theme');
+    if(saved === 'light'){ document.documentElement.classList.add('light'); }
+
+    // Inprimatu
+    document.getElementById('printBtn').addEventListener('click',()=>window.print());
+
+    // Zabaldu/itxi details guztiak
+    const collapseBtn = document.getElementById('collapseAll');
+    collapseBtn.addEventListener('click',()=>{
+      document.querySelectorAll('details').forEach(d=> d.open = !d.open);
+    });
+
+    // Bilaketa timelinean
+    const filter = document.getElementById('filter');
+    const items = [...document.querySelectorAll('#tl .tl-item')];
+    filter.addEventListener('input', e=>{
+      const q = e.target.value.trim().toLowerCase();
+      items.forEach(it=>{
+        const txt = it.innerText.toLowerCase() + ' ' + (it.dataset.tags||'');
+        it.style.display = txt.includes(q) ? '' : 'none';
+      })
+    });
+
+    // Quiz
+    const checkBtn = document.getElementById('checkQuiz');
+    const res = document.getElementById('result');
+    checkBtn.addEventListener('click', ()=>{
+      let score = 0, total = 0; const wrong = [];
+      document.querySelectorAll('.quiz .q').forEach((q,i)=>{
+        total++;
+        const ans = q.dataset.ans;
+        const picked = q.querySelector('input[type=radio]:checked');
+        const val = picked ? picked.value : '_';
+        q.style.borderColor = (val===ans)? 'var(--ok)' : 'var(--danger)';
+        if(val===ans) score++; else wrong.push(i+1);
+      });
+      res.innerHTML = `Zure puntuazioa: <span class="score">${score}/${total}</span>` + (wrong.length? ` · Okerrak: ${wrong.join(', ')}`: ' · Bikain!');
+    });
+
+    // Taulako errenkadak bilagarri egiteko (klik eta kopiatu)
+    document.getElementById('lawTable').addEventListener('click', e=>{
+      const tr = e.target.closest('tr');
+      if(!tr || !navigator.clipboard) return;
+      const txt = [...tr.children].map(td=>td.textContent).join(' \t ');
+      navigator.clipboard.writeText(txt);
+    });
+  </script>
+</body>
+</html>
